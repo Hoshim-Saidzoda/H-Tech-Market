@@ -88,11 +88,12 @@ const Header: React.FC = () => {
   </div>
 ) : (
   <button
-    className="flex items-center gap-2 text-left"
-    onClick={() => navigate("/login")}
-  >
-    Войти
-  </button>
+  onClick={() => navigate("/login")}
+  className="flex flex-col items-center gap-1 text-xs text-gray-700 hover:text-blue-600 transition"
+>
+  <User size={22} />
+  <span>Войти</span>
+</button>
 )}
 
             <div
