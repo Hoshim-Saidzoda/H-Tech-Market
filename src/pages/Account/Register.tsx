@@ -42,8 +42,8 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-50">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 space-y-6">
+    <div className="flex items-center justify-center min-h-screen mt-20 bg-gray-50">
+      <div className="w-full max-w-md  bg-white rounded-2xl shadow-xl p-8 space-y-6">
         <h1 className="text-3xl font-extrabold text-center text-gray-900">
           Создайте аккаунт H-Tech Market
         </h1>

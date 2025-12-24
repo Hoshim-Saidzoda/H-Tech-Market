@@ -36,7 +36,7 @@ const Home: React.FC = () => {
       <ProductCard
       
         key={product.id} product={product} 
-        image={`http://37.27.29.18:8002/images/${product.image}`}
+        image={`https://store-api.softclub.tj/images/${product.image}`}
         title={product.productName}
         price={product.discountPrice}
         oldPrice={  product.price   }
@@ -47,6 +47,7 @@ const Home: React.FC = () => {
 
 <CategoryList />
 <Products />
+<BrandDetails />
       </main>
   );
 };

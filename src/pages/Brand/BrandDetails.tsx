@@ -12,7 +12,7 @@ interface Brand {
 const fetchBrand = async (id: string) => {
   const token = localStorage.getItem("userToken");
   const { data } = await axios.get(
-    "http://37.27.29.18:8002/Brand/get-product-by-id",
+    "https://store-api.softclub.tj/Brand/get-product-by-id",
     {
       params: { id },
       headers: { Authorization: `Bearer ${token}` },

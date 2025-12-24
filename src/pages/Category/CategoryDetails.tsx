@@ -16,7 +16,7 @@ const CategoryDetails: React.FC = () => {
   if (error || !category) return  
 
   return (
-  <div className="max-w-7xl mx-auto p-6">
+  <div className="max-w-7xl mx-auto mt-20 p-6">
   <div className="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row md:items-center md:gap-12 p-6 md:p-10">
 
 

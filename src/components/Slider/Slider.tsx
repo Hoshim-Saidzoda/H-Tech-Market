@@ -22,7 +22,7 @@ const Slider: React.FC = () => {
   }, []);
 
   return (
-    <div className="overflow-hidden max-w-[1440px] m-auto h-64 rounded-2xl">
+    <div className="overflow-hidden max-w-[1440px] m-auto h-64 mt-20 rounded-2xl">
       <div
         ref={sliderRef}
         className="flex transition-transform duration-700 ease-in-out w-full h-full"

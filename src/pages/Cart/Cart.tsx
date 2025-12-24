@@ -16,7 +16,7 @@ const Cart: React.FC = () => {
 
   if (items.length === 0) {
     return (
-      <div className="max-w-4xl mx-auto p-8 text-center">
+      <div className="max-w-4xl mx-auto mt-20 p-8 text-center">
         <h2 className="text-xl font-semibold mb-2">Корзина пуста</h2>
         <p className="text-gray-500">Добавьте товары, чтобы оформить заказ</p>
       </div>
@@ -24,7 +24,7 @@ const Cart: React.FC = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto p-4">
+    <div className="max-w-7xl mt-20 mx-auto p-4">
       <h1 className="text-xl font-bold mb-6">
         Корзина ({totalCount()} товаров)
       </h1>
@@ -36,7 +36,7 @@ const Cart: React.FC = () => {
             className="flex gap-4 bg-white p-4 rounded shadow"
           >
             <img
-              src={`http://37.27.29.18:8002/images/${item.image}`}
+              src={`https://store-api.softclub.tj/images/${item.image}`}
               className="w-24 h-24 object-cover rounded"
             />
 
