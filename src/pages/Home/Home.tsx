@@ -7,6 +7,7 @@ import { Product } from "../../types/product";
 import Slider from "../../components/Slider/Slider";
  import CategoryList from "../Category/CategoryList";
  import Products from "../Products/Products"
+ import BrandDetails from "../../pages/Brand/BrandDetails";
 const Home: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState<string>("");
   const { colors } = useColors();
@@ -46,7 +47,7 @@ const Home: React.FC = () => {
 
 <CategoryList />
 <Products />
-     </main>
+      </main>
   );
 };
 

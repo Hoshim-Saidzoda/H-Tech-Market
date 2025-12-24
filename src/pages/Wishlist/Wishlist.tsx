@@ -2,6 +2,7 @@ import React from "react";
 import { useWishlistStore } from "../../store/wishlist.store";
 import { useCartStore } from "../../store/cart.store";
 import ProductCard from "../../components/ProductCard/ProductCard";
+ 
 
 const Wishlist: React.FC = () => {
   const { items, removeFromWishlist } = useWishlistStore();

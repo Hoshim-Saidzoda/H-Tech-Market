@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getCategories } from "../../api/category.api";
 import { Category } from "../../types/category";
 import { useNavigate } from "react-router-dom";
-
+import API from "../../api/axios";
 const CategoryList: React.FC = () => {
   const { data: categories, isLoading, error } = useQuery<Category[]>({
     queryKey: ["categories"],
@@ -26,7 +26,7 @@ const navigate = useNavigate();
 
      >
            <img
-            src={`http://37.27.29.18:8002/images/${category.categoryImage}`}
+            src={`https://store-api.softclub.tj/images/${category.categoryImage}`}
             alt={category.categoryName}
             className="w-full h-48 object-cover"
           />

@@ -43,7 +43,7 @@ const CategoryDetails: React.FC = () => {
     {category.categoryImage && (
       <div className="flex-shrink-0 w-full md:w-96 mt-6 md:mt-0">
         <img
-          src={`http://37.27.29.18:8002/images/${category.categoryImage}`}
+          src={`https://store-api.softclub.tj/images/${category.categoryImage}`}
           alt={category.categoryName}
           className="w-full h-96 object-cover rounded-3xl shadow-lg transform hover:scale-105 transition duration-500"
         />

@@ -20,14 +20,14 @@ const ColorFilter: React.FC<ColorFilterProps> = ({ colors, selectedColor, onSele
       {colors.map((color) => (
         <button
           key={color.id}
-          className={`px-3 py-1 rounded border cursor-pointer ${
-            selectedColor === color.colorName ? "bg-blue-600 text-white" : "bg-white text-gray-700"
-          }`}
-          style={{ backgroundColor: color.hex || color.colorName }}
           onClick={() => onSelectColor(color.colorName)}
+          className={`w-8 h-8 rounded-full border-2 transition flex items-center justify-center
+            ${selectedColor === color.colorName ? "border-blue-600 ring-2 ring-blue-400" : "border-gray-300"}
+          `}
+          style={{ backgroundColor: color.hex || color.colorName }}
+          title={color.colorName}
         >
-          {color.colorName}
-        </button>
+         </button>
       ))}
     </div>
   );

@@ -1,17 +1,19 @@
-import React from "react";
-import { User, Heart, ShoppingCart, Search } from "lucide-react";
+ import { User, Heart, ShoppingCart, Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import Logo from "../../assets/logo.png";
 import { useWishlistStore } from "../../store/wishlist.store";
 import { useCartStore } from "../../store/cart.store";
+import BrandFilter from "../../components/BrandCard/BrandCard";
+import React, { useState } from "react";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
   const { user, setUser } = useUser();
   const { items: wishlist } = useWishlistStore();
   const { totalCount } = useCartStore();
-
+const [isCatalogOpen, setIsCatalogOpen] = useState(false);
+const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
   const handleLogout = () => {
     setUser(null);
     navigate("/");
@@ -19,27 +21,50 @@ const Header: React.FC = () => {
 
   return (
     <header className="border-b mask-linear-to-blue-50 border-gray-200">
-      <div className="max-w-[1440px] mx-auto px-4 h-[72px] flex items-center gap-4">
+<div
+  className={`max-w-[1440px] mx-auto px-4 flex gap-4 transition-all duration-300
+    ${isCatalogOpen ? "min-h-[340px] items-start pt-3" : "h-[72px] items-center"}
+  `}
+>
 
          <div className="flex flex-col leading-none mr-2 cursor-pointer">
   <img 
     src={Logo} 
     alt="Logo" 
     className="w-36 object-cover rounded-2xl " 
-    style={{ height: "52px" }} 
+    style={{ height: "42px" }} 
   />
 </div>
 
 
-         <button className="h-[44px] px-4 rounded-xl bg-blue-600 hover:bg-blue-700 transition text-white font-semibold flex items-center gap-2">
-          <div className="grid grid-cols-2 gap-[3px]">
-            <span className="w-[6px] h-[6px] bg-white rounded-sm" />
-            <span className="w-[6px] h-[6px] bg-white rounded-sm" />
-            <span className="w-[6px] h-[6px] bg-white rounded-sm" />
-            <span className="w-[6px] h-[6px] bg-white rounded-sm" />
-          </div>
-          Каталог
-        </button>
+         <div className="relative">
+  <button
+    onClick={() => setIsCatalogOpen(!isCatalogOpen)}
+    className="h-[44px] px-4 rounded-xl bg-blue-600 hover:bg-blue-700 transition text-white font-semibold flex items-center gap-2"
+  >
+    <div className="grid grid-cols-2 gap-[3px]">
+      <span className="w-[6px] h-[6px] bg-white rounded-sm" />
+      <span className="w-[6px] h-[6px] bg-white rounded-sm" />
+      <span className="w-[6px] h-[6px] bg-white rounded-sm" />
+      <span className="w-[6px] h-[6px] bg-white rounded-sm" />
+    </div>
+    Каталог
+  </button>
+
+   {isCatalogOpen && (
+    <div className="absolute top-[52px] left-0 w-[320px] bg-white shadow-xl rounded-xl p-4 z-50">
+ 
+      <BrandFilter
+        selectedBrand={selectedBrand}
+        onSelectBrand={(brand) => {
+          setSelectedBrand(brand);
+          setIsCatalogOpen(false);
+          navigate(`/products?brand=${brand}`);
+        }}
+      />
+    </div>
+  )}
+</div>
 
          <div className="flex flex-1 h-[44px] border-2 border-blue-600 rounded-xl overflow-hidden">
           <select className="px-3 text-sm outline-none">
