@@ -1,6 +1,6 @@
 import React from "react";
 import { Facebook, Instagram, Twitter, Youtube, Heart, Shield, Truck, CreditCard, Sparkles, Crown } from "lucide-react";
-import logo from "../../assets/Logo.png"
+import logo from "../../assets/logo.png"
 
 const Footer: React.FC = () => {
   return (
