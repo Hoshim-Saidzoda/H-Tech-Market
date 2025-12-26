@@ -4,7 +4,11 @@ import { getCategories } from "../../api/category.api";
 import { Category } from "../../types/category";
 import { useNavigate } from "react-router-dom";
 import API from "../../api/axios";
-const CategoryList: React.FC = () => {
+interface Props {
+  onSelect?: () => void;
+}
+const CategoryList: React.FC<Props> = ({ onSelect }) => {
+ 
   const { data: categories, isLoading, error } = useQuery<Category[]>({
     queryKey: ["categories"],
     queryFn: getCategories,
@@ -17,18 +21,21 @@ const navigate = useNavigate();
   return (
  <div className="max-w-8xl mx-auto p-4">
   <h1 className="text-3xl font-bold mb-6 text-center">Категории</h1>
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
     {categories?.map((category) => (
       <div
         key={category.id}
         className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer overflow-hidden"
-       onClick={() => navigate(`/category/${category.id}`)}
+onClick={() => {
+  onSelect?.();
+  navigate(`/category/${category.id}`);
+}}
 
      >
            <img
             src={`https://store-api.softclub.tj/images/${category.categoryImage}`}
             alt={category.categoryName}
-            className="w-full h-48 object-cover"
+            className="w-fuul h-38 object-cover"
           />
       
         <div className="p-4">

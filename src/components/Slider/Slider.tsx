@@ -22,21 +22,22 @@ const Slider: React.FC = () => {
   }, []);
 
   return (
-    <div className="overflow-hidden max-w-[1440px] m-auto h-64 mt-20 rounded-2xl">
-      <div
-        ref={sliderRef}
-        className="flex transition-transform duration-700 ease-in-out w-full h-full"
-      >
-        {images.map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt={`slide-${i}`}
-            className="w-full flex-shrink-0 object-cover"
-          />
-        ))}
-      </div>
-     </div>
+    <div className="overflow-hidden w-full max-w-[1740px] mx-auto mt-20 rounded-3xl h-[180px] sm:h-[260px] md:h-[400px]">
+  <div
+    ref={sliderRef}
+    className="flex h-full transition-transform duration-700 ease-in-out"
+  >
+    {images.map((src, i) => (
+      <img
+        key={i}
+        src={src}
+        alt={`slide-${i}`}
+        className="w-full flex-shrink-0 object-cover"
+      />
+    ))}
+  </div>
+</div>
+
   );
 };
 
