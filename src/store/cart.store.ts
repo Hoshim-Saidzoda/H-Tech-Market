@@ -36,6 +36,7 @@ export const useCartStore = create<CartState>((set, get) => ({
     );
 
     let newItems: CartItem[];
+
     if (existing) {
       newItems = items.map((i) =>
         i.id === product.id && i.selectedColor === product.selectedColor
@@ -62,31 +63,34 @@ export const useCartStore = create<CartState>((set, get) => ({
 
   decrease: (id, color) => {
     const newItems = get()
-      .items.map((i) =>
+      .items
+      .map((i) =>
         i.id === id && i.selectedColor === color
           ? { ...i, quantity: i.quantity - 1 }
           : i
       )
       .filter((i) => i.quantity > 0);
+
     set({ items: newItems });
     saveToStorage(newItems);
   },
 
- remove: (id, color) => {
-  const newItems = get().items.filter(
-    (i) => !(i.id === id && i.selectedColor === color)
-  );
-  set({ items: newItems });
-  saveToStorage(newItems);
-},
-
+  remove: (id, color) => {
+    const newItems = get().items.filter(
+      (i) => !(i.id === id && i.selectedColor === color)
+    );
+    set({ items: newItems });
+    saveToStorage(newItems);
+  },
 
   clear: () => {
     set({ items: [] });
     localStorage.removeItem("cart");
   },
 
-  totalCount: () => get().items.reduce((sum, i) => sum + i.quantity, 0),
+  totalCount: () =>
+    get().items.reduce((sum, i) => sum + i.quantity, 0),
+
   totalPrice: () =>
     get().items.reduce(
       (sum, i) =>

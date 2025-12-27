@@ -29,3 +29,18 @@ export interface Category {
   });
   return data.data;
 };
+export const getSubCategoriesByCategoryId = async (categoryId: number): Promise<SubCategory[]> => {
+  const { data } = await API.get(`/SubCategory/get-sub-category?CategoryId=${categoryId}`, {
+    headers: {
+      Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    },
+  });
+  console.log("subCategoryIdNumber:", subCategoryIdNumber);
+console.log("subCategory:", subCategory);
+console.log("error:", error);
+
+  console.log("Ответ сервера:", data); 
+  return data.data || [];
+};
+
+ 

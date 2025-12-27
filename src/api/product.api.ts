@@ -10,8 +10,7 @@ export interface GetProductsParams {
 
  
  
-// Получить все продукты
-export const getProducts = async () => {
+ export const getProducts = async () => {
   const { data } = await API.get("/Product/get-products", {
     headers: {
       Authorization:
@@ -22,8 +21,7 @@ export const getProducts = async () => {
   return data.data.products;  
 };
 
-// Получить продукт по ID
-export const getProductById = async (id: number) => {
+ export const getProductById = async (id: number) => {
   const { data } = await API.get(`/Product/get-product-by-id?id=${id}`, {
     headers: {
       Authorization:
@@ -34,8 +32,8 @@ export const getProductById = async (id: number) => {
   return data.data;
 };
 
-// Добавить продукт (для админа)
-export const addProduct = async (product: any) => {
-  const { data } = await API.post("/Product/add-product", product);
+ export const addProduct = async (product: any) => {
+  const { data } = await 
+  API.post("/Product/add-product", product);
   return data;
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { Facebook, Instagram, Twitter, Youtube, Heart, Shield, Truck, CreditCard, Sparkles, Crown } from "lucide-react";
-import logo from "../../assets/logo.png"
+import logo from "../../assets/21.png"
 
 const Footer: React.FC = () => {
   return (
@@ -12,59 +12,7 @@ const Footer: React.FC = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-16">
         
-         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
-          {[
-            {
-              icon: Shield,
-              title: "100% Безопасно",
-              desc: "SSL шифрование",
-              gradient: "from-blue-500 to-blue-600",
-              bg: "bg-blue-50",
-              border: "border-blue-100"
-            },
-            {
-              icon: Truck,
-              title: "Быстрая доставка",
-              desc: "1-2 дня по городу",
-              gradient: "from-emerald-500 to-green-600",
-              bg: "bg-emerald-50",
-              border: "border-emerald-100"
-            },
-            {
-              icon: CreditCard,
-              title: "Удобная оплата",
-              desc: "Карта или наличные",
-              gradient: "from-purple-500 to-pink-600",
-              bg: "bg-purple-50",
-              border: "border-purple-100"
-            },
-            {
-              icon: Heart,
-              title: "Поддержка 24/7",
-              desc: "Всегда на связи",
-              gradient: "from-rose-500 to-orange-600",
-              bg: "bg-rose-50",
-              border: "border-rose-100"
-            }
-          ].map((feature, index) => (
-            <div 
-              key={index} 
-              className={`relative p-6 rounded-2xl ${feature.bg} border ${feature.border} 
-                        hover:shadow-xl hover:-translate-y-1 transition-all duration-300 
-                        backdrop-blur-sm bg-white/60`}
-            >
-              <div className="absolute -top-3 -right-3">
-                <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${feature.gradient} 
-                              flex items-center justify-center shadow-lg`}>
-                  <feature.icon className="w-6 h-6 text-white" />
-                </div>
-              </div>
-              <h4 className="font-bold text-gray-900 text-lg mb-2">{feature.title}</h4>
-              <p className="text-gray-600 text-sm">{feature.desc}</p>
-            </div>
-          ))}
-        </div>
-
+          
          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
            <div className="space-y-6">
             <div className="flex items-center gap-4">
@@ -88,8 +36,8 @@ const Footer: React.FC = () => {
               <div className="w-1 h-4 bg-gradient-to-b from-blue-500 to-purple-500 rounded" />
               Навигация
             </h5>
-            <div className="grid grid-cols-2 gap-4">
-              {['Главная', 'Каталог', 'Новинки', 'Распродажа', 'Бренды', 'О нас'].map((item) => (
+            <div className="grid grid-cols-1 gap-4">
+              {['Главная', 'Каталог', 'Новинки' ].map((item) => (
                 <a 
                   key={item}
                   href="#" 

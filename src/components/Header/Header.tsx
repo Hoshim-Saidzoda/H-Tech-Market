@@ -5,7 +5,7 @@ import { useUser } from "../../context/UserContext";
 import { useWishlistStore } from "../../store/wishlist.store";
 import { useCartStore } from "../../store/cart.store";
 import CategoryList from "../../pages/Category/CategoryList";
-import Logo from "../../assets/logo.png";
+import { AccountCircle, Login, Logout, FavoriteBorder, ShoppingBag } from '@mui/icons-material';import Logo from "../../assets/logo.png";
  const Header: React.FC = () => {
   const navigate = useNavigate();
   const { user, setUser } = useUser();
@@ -81,53 +81,56 @@ import Logo from "../../assets/logo.png";
             </button>
           </div>
 
-           <div className="flex gap-6">
-            {user ? (
-              <div className="flex flex-col text-sm">
-                <span className="font-medium">{user.name}</span>
-                <button
-                  onClick={handleLogout}
-                  className="text-red-500 hover:underline text-left"
-                >
-                  Выйти
-                </button>
-              </div>
-            ) : (
-              <button
-                onClick={() => navigate("/login")}
-                className="flex flex-col items-center text-xs hover:text-blue-600 transition"
-              >
-                <User size={22} />
-                <span>Войти</span>
-              </button>
-            )}
+    <div className="flex gap-6 items-center">
+  {user ? (
+    <div className="flex items-center gap-2">
+      <AccountCircle sx={{ fontSize: 32, color: '#005BFF' }} />
+      <div className="flex flex-col text-sm">
+        <span className="font-medium text-gray-800">{user.name}</span>
+        <button
+          onClick={handleLogout}
+          className="text-red-500 hover:underline text-left flex items-center gap-1"
+        >
+          <Logout sx={{ fontSize: 14 }} />
+          <span>Выйти</span>
+        </button>
+      </div>
+    </div>
+  ) : (
+    <button
+      onClick={() => navigate("/login")}
+      className="flex flex-col items-center text-xs hover:text-blue-600 transition"
+    >
+      <Login sx={{ fontSize: 32 }} />
+      <span>Войти</span>
+    </button>
+  )}
 
-            <button
-              onClick={() => navigate("/wishlist")}
-              className="relative flex flex-col items-center text-xs hover:text-blue-600 transition"
-            >
-              <Heart size={22} />
-              {wishlist.length > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[9px] px-1 rounded-full">
-                  {wishlist.length}
-                </span>
-              )}
-              <span>Избранное</span>
-            </button>
+  <button
+    onClick={() => navigate("/wishlist")}
+    className="relative flex flex-col items-center text-xs hover:text-blue-600 transition"
+  >
+    <FavoriteBorder sx={{ fontSize: 22 }} />
+    {wishlist.length > 0 && (
+      <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs min-w-[15px] h-[15px] flex items-center justify-center rounded-full">
+        {wishlist.length}
+      </span>
+    )}
+    <span>Избранное</span>
+  </button>
 
-            <button
-              onClick={() => navigate("/cart")}
-              className="relative flex flex-col items-center text-xs hover:text-blue-600 transition"
-            >
-              <ShoppingCart size={22} />
-              {totalCount() > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[9px] px-1 rounded-full">
-                  {totalCount()}
-                </span>
-              )}
-              <span>Корзина</span>
-            </button>
-          </div>
+  <button
+    onClick={() => navigate("/cart")}
+    className="relative flex items-center justify-center"
+  >
+    <ShoppingCart sx={{ fontSize: 64 }} />
+    {totalCount() > 0 && (
+      <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs min-w-[15px] h-[15px] flex items-center justify-center rounded-full">
+        {totalCount()}
+      </span>
+    )}
+  </button>
+</div>
         </div>
 
          <button

@@ -13,7 +13,8 @@ import CategoryList  from "../pages/Category/CategoryList";
 import CategoryDetails from "../pages/Category/CategoryDetails";
 import Colors from "../pages/Colors/Colors";
 import Products from "../pages/Products/Products";
-
+import SubCategory from "../pages/Category/SubCategories"
+import SubCategoryDetails from "../pages/Category/SubCategoryDetails"
  const router = createBrowserRouter([
   {
     path: "/",
@@ -35,6 +36,9 @@ import Products from "../pages/Products/Products";
   { path: "/product/:id", element: <ProductDetails /> },
   { path: "/Category", element: <CategoryList /> },
       { path: "/category/:categoryId", element: <CategoryDetails /> },
+{ path: "/category/:categoryId/subcategories", element: <SubCategory /> },
+      { path: "/subcategory/:subCategoryId", element: <SubCategoryDetails /> },
+
 {
   path: "/colors",
   element: <Colors />,
