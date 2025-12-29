@@ -60,7 +60,7 @@ const Slider: React.FC = () => {
   }, [currentIndex]);
 
   return (
-    <div className="relative w-full max-w-[1740px] mx-auto mt-20 rounded-3xl h-[20px] sm:h-[320px] md:h-[350px] lg:h-[400px] overflow-hidden group">
+    <div className="relative w-full max-w-[1740px] mx-auto mt-20 rounded-3xl h-[250px] sm:h-[320px] md:h-[350px] lg:h-[400px] overflow-hidden group">
       <div
         ref={sliderRef}
         className="flex h-full transition-transform duration-500 ease-out"

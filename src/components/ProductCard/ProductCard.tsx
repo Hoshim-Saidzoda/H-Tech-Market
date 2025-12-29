@@ -40,50 +40,53 @@ const handleAddToCart = (e: React.MouseEvent) => {
 
   return (
     <div 
-      className="group relative bg-white rounded-lg overflow-hidden transition-all duration-200 hover:shadow-md border border-gray-200 hover:border-orange-200"
+      className="group relative bg-white rounded-lg overflow-hidden transition-all duration-200 hover:shadow-md mt-20 border  border-gray-200 hover:border-orange-200"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-       <div className="relative aspect-square bg-white p-4">
-        <div 
-          className="relative h-full w-full cursor-pointer"
-          onClick={() => navigate(`/product/${product.id}`)}
-        >
-          <img
-            src={`https://store-api.softclub.tj/images/${product.image}`}
-            alt={product.productName}
-            className="w-full h-full  transition-transform duration-300 group-hover:scale-110"
-          />
-        </div>
+       <div className="relative aspect-square bg-gradient-to-br from-gray-50 to-white p-4">
+  <div 
+    className="relative h-full w-full cursor-pointer group"
+    onClick={() => navigate(`/product/${product.id}`)}
+  >
+  
 
-       
+    <div className="relative h-full w-full overflow-hidden rounded-2xl bg-gray-100">
+      <img
+        src={`https://store-api.softclub.tj/images/${product.image}`}
+        alt={product.productName}
+        className="w-full h-full object-contain p-2 transition-all duration-500 group-hover:scale-105 group-hover:p-1"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent rounded-2xl" />
+    </div>
+  </div>
 
-         <button
-          onClick={(e) => {
-            e.stopPropagation();
-            isInWishlist(product.id)
-              ? removeFromWishlist(product.id)
-              : addToWishlist(product);
-          }}
-          className="absolute top-2 right-2 z-10"
-        >
-          <div className={`
-            w-8 h-8 rounded-full flex items-center justify-center
-            transition-all duration-200
-            ${isInWishlist(product.id) 
-              ? 'bg-red-50 text-red-500 border border-red-200' 
-              : 'bg-white text-gray-500 border border-gray-200 hover:border-gray-300'
-            }
-            hover:shadow-sm
-          `}>
-            {isInWishlist(product.id) ? (
-              <FavoriteIcon sx={{ fontSize: 18 }} />
-            ) : (
-              <FavoriteBorderIcon sx={{ fontSize: 18 }} />
-            )}
-          </div>
-        </button>
-      </div>
+   <button
+    onClick={(e) => {
+      e.stopPropagation();
+      isInWishlist(product.id)
+        ? removeFromWishlist(product.id)
+        : addToWishlist(product);
+    }}
+    className="absolute top-3 right-3 z-20"
+  >
+    <div className={`
+      w-10 h-10 rounded-full flex items-center justify-center
+      transition-all duration-300
+      ${isInWishlist(product.id) 
+        ? 'bg-gradient-to-br from-red-100 to-red-50 text-red-500 border border-red-200 shadow-lg scale-110' 
+        : 'bg-white/90 text-gray-600 border border-gray-200/80 hover:border-gray-300'
+      }
+      hover:shadow-xl backdrop-blur-sm hover:scale-110
+    `}>
+      {isInWishlist(product.id) ? (
+        <FavoriteIcon sx={{ fontSize: 22 }} />
+      ) : (
+        <FavoriteBorderIcon sx={{ fontSize: 22 }} />
+      )}
+    </div>
+  </button>
+</div>
 
        <div className="p-3 pt-0">
          <div className="mb-2">
@@ -94,10 +97,16 @@ const handleAddToCart = (e: React.MouseEvent) => {
                <>
                 <span className="text-sm text-gray-500 line-through">
                   {product.price.toLocaleString()} ₽
-                </span>
-                <span className="text-xs font-medium text-[#FF6B35] bg-orange-50 px-1.5 py-0.5 rounded">
-                  -{discountPercentage}%
-                </span>
+                </span><span className={`
+  text-xs font-medium px-1.5 py-0.5 rounded
+  ${discountPercentage > 0 
+    ? 'text-[#FF6B35] bg-orange-50' 
+    : 'text-green-600 bg-green-50'
+  }
+`}>
+  {discountPercentage > 0 ? '-' : '+'}{Math.abs(discountPercentage)}%
+</span>
+                 
               </>
            </div>
           
@@ -262,8 +271,7 @@ const handleAddToCart = (e: React.MouseEvent) => {
         </button>
       </div>
       
-      {/* Иконка */}
-      <div className="flex justify-center mb-4">
+       <div className="flex justify-center mb-4">
         <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
           <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />

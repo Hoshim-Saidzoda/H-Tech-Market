@@ -36,10 +36,10 @@ const Cart: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-       <div className="mb-8">
+       <div className="mb-8 mt-20">
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
+          className="flex items-center gap-2 text-gray-600 border border-blue-500 px-4 py-3 rounded-2xl hover:text-gray-900"
         >
           <ArrowBack sx={{ fontSize: 20 }} />
           Назад
@@ -90,8 +90,7 @@ const Cart: React.FC = () => {
                           </div>
                         )}
 
-                        {/* Цена */}
-                        <div className="flex items-baseline gap-2">
+                         <div className="flex items-baseline gap-2">
                           <span className="text-xl font-bold text-gray-900">
                             {item.hasDiscount ? item.discountPrice.toLocaleString() : item.price.toLocaleString()} ₽
                           </span>

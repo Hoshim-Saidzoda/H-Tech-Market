@@ -6,8 +6,8 @@ import Footer from "./components/Footer/Footer";
 const App: React.FC = () => {
   const location = useLocation();
 
-   const hideFooterRoutes = ["/cart"];
-
+   const hideFooterRoutes = ["/wishlist","/cart"];
+ 
   const hideFooter = hideFooterRoutes.includes(location.pathname);
 
   return (
