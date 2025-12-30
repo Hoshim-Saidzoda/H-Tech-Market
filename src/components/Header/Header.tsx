@@ -39,8 +39,7 @@ const Header: React.FC = () => {
           />
         </div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-6 flex-1 ml-6">
+         <div className="hidden lg:flex items-center gap-6 flex-1 ml-6">
           <div className="relative">
             <button
               onClick={() => setIsCatalogOpen((p) => !p)}
@@ -73,7 +72,7 @@ const Header: React.FC = () => {
             )}
           </div>
 
-          <div className="flex w-[500px] h-[44px] mx-40 border-2 border-blue-600 rounded-xl overflow-hidden">
+          <div className="flex w-[500px] h-[44px] mx-55 border-2 border-blue-600 rounded-xl overflow-hidden">
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
