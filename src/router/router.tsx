@@ -15,6 +15,7 @@ import Colors from "../pages/Colors/Colors";
 import Products from "../pages/Products/Products";
 import SubCategory from "../pages/Category/SubCategories"
 import SubCategoryDetails from "../pages/Category/SubCategoryDetails"
+import ProductsFilter from "../pages/ProductsFilter/ProductsFilter"
  const router = createBrowserRouter([
   {
     path: "/",
@@ -38,6 +39,7 @@ import SubCategoryDetails from "../pages/Category/SubCategoryDetails"
       { path: "/category/:categoryId", element: <CategoryDetails /> },
 { path: "/category/:categoryId/subcategories", element: <SubCategory /> },
       { path: "/subcategory/:subCategoryId", element: <SubCategoryDetails /> },
+      { path: "/ProductsFilter", element: <ProductsFilter /> },
 
 {
   path: "/colors",

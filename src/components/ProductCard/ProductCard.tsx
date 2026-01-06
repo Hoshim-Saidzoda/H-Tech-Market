@@ -40,7 +40,7 @@ const handleAddToCart = (e: React.MouseEvent) => {
 
   return (
     <div 
-      className="group relative bg-white rounded-lg overflow-hidden transition-all duration-200 hover:shadow-md mt-20 border  border-gray-200 hover:border-orange-200"
+      className="group relative bg-white rounded-lg overflow-hidden transition-all duration-200 hover:shadow-md mt-20 border  border-gray-200 hover:border-orange-200 "
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

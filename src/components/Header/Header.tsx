@@ -7,7 +7,11 @@ import { useCartStore } from "../../store/cart.store";
 import CategoryList from "../../pages/Category/CategoryList";
 import { AccountCircle, Login, Logout, FavoriteBorder } from '@mui/icons-material';
 import Logo from "../../assets/logo.png";
+import { Button } from '@mui/material';
 
+import FilterListIcon from '@mui/icons-material/FilterList';
+
+import ProductsFilter from "../../pages/ProductsFilter/ProductsFilter"
 const Header: React.FC = () => {
   const navigate = useNavigate();
   const { user, setUser } = useUser();
@@ -29,11 +33,12 @@ const Header: React.FC = () => {
     <header className="fixed top-0 left-0 w-full z-50 border-b border-gray-200 bg-white/80 backdrop-blur-md">
       <div className="max-w-[1440px] mx-auto px-4 h-[72px] flex items-center justify-between">
         <div className="flex items-center gap-4">
+          
           <img
             src={Logo}
             alt="Logo"
             className="h-[42px] object-cover rounded-xl cursor-pointer 
-                     border-2 border-transparent hover:border-blue-500/30 
+                      
                      transition-all duration-300 hover:scale-105"
             onClick={() => navigate("/")}
           />
@@ -41,24 +46,24 @@ const Header: React.FC = () => {
 
          <div className="hidden lg:flex items-center gap-6 flex-1 ml-6">
           <div className="relative">
-            <button
-              onClick={() => setIsCatalogOpen((p) => !p)}
-              className="h-[44px] px-4 rounded-xl bg-blue-600 text-white font-semibold
-                       flex items-center gap-2 hover:bg-blue-700 transition"
-            >
-              <div className="grid grid-cols-2 gap-[3px]">
-                <span className="w-[6px] h-[6px] bg-white rounded-sm" />
-                <span className="w-[6px] h-[6px] bg-white rounded-sm" />
-                <span className="w-[6px] h-[6px] bg-white rounded-sm" />
-                <span className="w-[6px] h-[6px] bg-white rounded-sm" />
-              </div>
-              Каталог
-            </button>
-
+           <button
+     onClick={() => setIsCatalogOpen((p) => !p)}
+       className="group   relative px-7 py-2.5 bg-white text-gray-800 font-medium rounded-xl border-2 border-blue-500 hover:bg-blue-50 hover:border-blue-600 transition-all duration-300 shadow-sm hover:shadow-md active:scale-[0.98]"
+>
+  <div className="flex items-center gap-2">
+    <div className="grid grid-cols-2 gap-[3px]">
+      <span className="w-[6px] h-[6px] bg-blue-600 rounded-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-700" />
+      <span className="w-[6px] h-[6px] bg-blue-600 rounded-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-700" />
+      <span className="w-[6px] h-[6px] bg-blue-600 rounded-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-700" />
+      <span className="w-[6px] h-[6px] bg-blue-600 rounded-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-700" />
+    </div>
+    <span className="text-blue-600 group-hover:text-blue-700 transition-colors">Каталог</span>
+  </div>
+</button>
             {isCatalogOpen && (
               <>
                 <div
-                  className="fixed inset-0 z-40 bg-black/10"
+                  className="fixed inset-0  z-40 bg-black/10"
                   onClick={() => setIsCatalogOpen(false)}
                 />
                 <div className="fixed top-[90px] left-1/2 -translate-x-1/2 z-50
@@ -71,8 +76,19 @@ const Header: React.FC = () => {
               </>
             )}
           </div>
-
-          <div className="flex w-[500px] h-[44px] mx-55 border-2 border-blue-600 rounded-xl overflow-hidden">
+<button
+  onClick={() => navigate("/ProductsFilter")}
+  className="group relative px-5 py-2.5 bg-white text-gray-800 font-medium rounded-xl border-2 border-blue-500 hover:bg-blue-50 hover:border-blue-600 transition-all duration-300 shadow-sm hover:shadow-md active:scale-[0.98]"
+>
+  <div className="flex items-center gap-2">
+    <svg className="w-5 h-5 text-blue-600 group-hover:text-blue-700 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+    </svg>
+    <span className="text-blue-600 group-hover:text-blue-700 transition-colors">Продукты</span>
+  </div>
+  <div className="absolute inset-0 rounded-xl bg-blue-500 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+</button>
+          <div className="flex w-[500px] h-[44px] mx-5 border-2 border-blue-600 rounded-xl overflow-hidden">
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -174,7 +190,7 @@ const Header: React.FC = () => {
             setIsCatalogOpen(true);
             setIsMobileMenuOpen(false);
           }}
-          className="flex items-center gap-3 w-full text-left p-2 hover:bg-gray-50 rounded-lg"
+          className="flex items-center  gap-3 w-full text-left p-2 hover:bg-gray-50 rounded-lg"
         >
           <div className="grid grid-cols-2 gap-1">
             {[...Array(4)].map((_, i) => (
@@ -184,6 +200,21 @@ const Header: React.FC = () => {
           <span className="font-medium">Каталог</span>
         </button>
 
+        <button
+ onClick={() => {
+    navigate("/ProductsFilter");
+    setIsMobileMenuOpen(false);
+  }}
+          className="flex items-center gap-3 w-full text-left p-2  hover:bg-gray-50  rounded-lg"
+>
+  <div className="flex items-center gap-2">
+    <svg className="w-5 h-5 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+    </svg>
+    <span className="font-medium">Продукты</span>
+  </div>
+ </button>
+ 
         <button
           onClick={() => {
             navigate("/wishlist");
@@ -280,8 +311,7 @@ const Header: React.FC = () => {
                   <h1 className="text-2xl font-bold">Каталог</h1>
                   <button
                     onClick={() => setIsCatalogOpen(false)}
-                    className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100"
-                  >
+          className="group relative px-10 py-2.5 bg-white text-gray-800 font-medium rounded-xl border-2 border-blue-500 hover:bg-blue-50 hover:border-blue-600 transition-all duration-300 shadow-sm hover:shadow-md active:scale-[0.98]"                  >
                     ✕
                   </button>
                 </div>
